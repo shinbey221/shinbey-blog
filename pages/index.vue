@@ -1,71 +1,89 @@
 <template>
   <v-app>
-    <div class="container">
-      <div>
-        <logo />
-        <h1 class="title">blog</h1>
-        <h2 class="subtitle">My primo Nuxt.js project</h2>
-        <div class="links">
-          <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-            >Documentation
-          </a>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            class="button--grey"
-            >GitHub
-          </a>
-          <v-btn color="primary">Primary</v-btn>
-          <v-alert type="success">
-            I'm a success alert.
-          </v-alert>
-        </div>
-      </div>
-    </div>
+    <BlogTitle :title="title" />
+    <v-row class="mb-6 content-area" no-gutters>
+      <v-col :cols="3"> </v-col>
+      <v-col :cols="6">
+        <v-card class="mx-auto" outlined style="margin-bottom: 30px;">
+          <v-list-item>
+            <v-list-item-avatar color="grey"></v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="headline"
+                >Our Changing Planet</v-list-item-title
+              >
+              <v-list-item-subtitle
+                >by Kurt Wagner</v-list-item-subtitle
+              >
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-img
+            src="https://cdn.vuetifyjs.com/images/cards/mountain.jpg"
+            height="194"
+          ></v-img>
+
+          <v-card-text>
+            Visit ten places on our planet that are undergoing the
+            biggest changes today.
+          </v-card-text>
+        </v-card>
+        <v-card
+          class="mx-auto"
+          outlined
+          style="height: 300px; margin-bottom: 30px;"
+        >
+        </v-card>
+        <v-card
+          class="mx-auto"
+          outlined
+          style="height: 300px; margin-bottom: 30px;"
+        >
+        </v-card>
+      </v-col>
+      <v-col :cols="3"> </v-col>
+    </v-row>
   </v-app>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Logo from '~/components/Logo.vue'
+import BlogTitle from '~/components/BlogTitle.vue'
 
 @Component({
   components: {
-    Logo
+    BlogTitle
   }
 })
-export default class IndexPage extends Vue {}
+export default class IndexPage extends Vue {
+  title: string = 'shinbey blog'
+  head() {
+    return {
+      script: [
+        {
+          src:
+            'https://identity.netlify.com/v1/netlify-identity-widget.js'
+        }
+      ]
+    }
+  }
+
+  async created() {
+    const files = await require.context(
+      '~/assets/content/blog/',
+      false,
+      /\.json$/
+    )
+    console.log(files)
+    const blogPosts = files.keys().map((key: any) => {
+      const res = files(key)
+      return res
+    })
+    console.log(blogPosts)
+  }
+}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.content-area {
 }
 </style>
