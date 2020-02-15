@@ -5,7 +5,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from 'vue-property-decorator'
+import {
+  Vue,
+  Prop,
+  Component
+} from 'vue-property-decorator'
 
 @Component
 export default class BlogTitle extends Vue {
