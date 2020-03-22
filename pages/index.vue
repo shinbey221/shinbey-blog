@@ -43,6 +43,7 @@ export default class IndexPage extends Vue {
   async created() {
     await items.getAllBlogItems()
     this.items = items.AllBlogItems
+    console.log(this.items)
   }
 }
 </script>

@@ -10,7 +10,6 @@
         </div>
       </v-list-item-content>
     </v-list-item>
-    <v-card-text>{{ item.content }}</v-card-text>
   </v-card>
 </template>
 

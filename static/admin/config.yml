@@ -25,6 +25,7 @@ collections:
           searchFields: ['title', 'body'],
           valueField: 'title',
           displayFields: ['title'],
+          multiple: true,
         }
       - { label: 'コンテンツ', name: 'content', widget: 'markdown' }
 
