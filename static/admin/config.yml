@@ -17,10 +17,18 @@ collections:
     fields:
       - { label: 'タイトル', name: 'title', widget: 'string' }
       - { label: '登校日', name: 'date', widget: 'datetime' }
-      - { label: "カテゴリ", name: "category", widget: "relation", collection: "categories", searchFields: ["title", "body"], valueField: "title", displayFields: ["title"] }
+      - {
+          label: 'カテゴリ',
+          name: 'category',
+          widget: 'relation',
+          collection: 'categories',
+          searchFields: ['title', 'body'],
+          valueField: 'title',
+          displayFields: ['title'],
+        }
       - { label: 'コンテンツ', name: 'content', widget: 'markdown' }
-      
-   - name: 'categories'
+
+  - name: 'categories'
     label: 'カテゴリ'
     folder: 'categories'
     create: true
