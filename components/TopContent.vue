@@ -1,12 +1,20 @@
 <template>
-  <v-card class="mx-auto" outlined style="margin-bottom: 30px;">
+  <v-card
+    class="mx-auto card-style"
+    outlined
+    @click="$emit('click', itemIndex)"
+  >
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline">{{ item.title }}</v-list-item-title>
         <v-list-item-subtitle>{{ item.date }}</v-list-item-subtitle>
         <div>
-          <v-chip class="ma-2" color="primary">Primary</v-chip>
-          <v-chip class="ma-2" color="secondary">Secondary</v-chip>
+          <template v-for="(item, key) in item.category">
+            <v-chip :key="key" class="ma-2" label>
+              <v-icon left> mdi-label</v-icon>
+              {{ item }}
+            </v-chip>
+          </template>
         </div>
       </v-list-item-content>
     </v-list-item>
@@ -14,29 +22,19 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from 'vue-property-decorator'
-import { BlogContent } from '~/types/index'
-
-interface Props {
-  title: string
-  date: string
-  tag: Array<string>
-  content: string
-}
+import { Vue, Prop, Component } from 'vue-property-decorator';
+import { BlogContent } from '~/types/index';
 
 @Component
 export default class BlogTitle extends Vue {
   @Prop({ default: '' })
-  private item!: BlogContent
+  private item!: BlogContent;
 }
 </script>
 
 <style scoped>
-.blog-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  height: 20vh;
+.card-style {
+  margin-bottom: 30px;
+  width: 95%;
 }
 </style>

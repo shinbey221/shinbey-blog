@@ -1,14 +1,15 @@
 export interface BlogContent {
-  title: string
-  date: string
-  description: Array<string>
-  body: string
+  title: string;
+  date: string;
+  category: string[];
+  content: string;
+  id: number;
 }
 
 export interface BlogItems {
-  items: Array<BlogContent>
+  items: Array<BlogContent>;
 }
 
 export interface BlogPostsType {
-  blogPosts: Array<any>
+  blogPosts: Array<any>;
 }

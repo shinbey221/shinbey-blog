@@ -3,29 +3,21 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
   },
   parserOptions: {},
   extends: [
     '@nuxtjs/eslint-config-typescript',
-    'prettier',
-    'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:vue/recommended',
-    'plugin:nuxt/recommended'
+    // 'plugin:vue/recommended',
+    'plugin:nuxt/recommended',
   ],
-  plugins: ['prettier'],
   // add your custom rules here
   rules: {
     'no-console': 'off',
     'no-unused-labels': 1,
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'none'
-      }
-    ],
-    'linebreak-style': 'off'
-  }
-}
+    'linebreak-style': 'off',
+    '@typescript-eslint/explicit-function-return-type': 2,
+    'vue/singleline-html-element-content-newline': 0,
+  },
+};
