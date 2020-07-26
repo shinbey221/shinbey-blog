@@ -27,6 +27,7 @@ collections:
           displayFields: ['title'],
           multiple: true,
         }
+      - { label: '導入', name: 'introduction', widget: 'string' }
       - { label: 'コンテンツ', name: 'content', widget: 'markdown' }
 
   - name: 'categories'
