@@ -3,11 +3,10 @@
     <div class="main-content">
       <BlogTitle :title="title" />
       <v-row class="mb-6 content-area" no-gutters>
-        <v-col :cols="2" />
-        <v-col :cols="6">
+        <v-col md="2" />
+        <v-col md="10" cols="12">
           <nuxt />
         </v-col>
-        <v-col :cols="4" />
       </v-row>
     </div>
   </v-app>

@@ -1,8 +1,15 @@
 <template>
   <div class="item-area">
-    <template v-for="(item, key) in items">
-      <TopContent :key="key" :item="item" @click="routeContent(item)" />
-    </template>
+    <v-col md="8">
+      <template v-for="(item, key) in items">
+        <TopContent :key="key" :item="item" @click="routeContent(item)" />
+      </template>
+    </v-col>
+    <v-col md="4">
+      <Card>
+        test
+      </Card>
+    </v-col>
   </div>
 </template>
 
@@ -11,12 +18,14 @@ import { Vue, Component } from 'vue-property-decorator';
 import { items, categories } from './../store/index';
 import BlogTitle from '~/components/BlogTitle.vue';
 import TopContent from '~/components/TopContent.vue';
+import Card from '~/components/Card.vue';
 
 @Component({
   layout: 'base',
   components: {
     BlogTitle,
     TopContent,
+    Card,
   },
 })
 export default class IndexPage extends Vue {
@@ -51,6 +60,5 @@ export default class IndexPage extends Vue {
 <style>
 .item-area {
   display: flex;
-  flex-flow: column;
 }
 </style>

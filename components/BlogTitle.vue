@@ -1,9 +1,19 @@
 <template>
   <header class="blog-top">
-    <div class="blog-title">
+    <v-col md="1" />
+    <v-col md="3" cols="12">
+      <div class="blog-title">
+        {{ title }}
+      </div>
+      <div class="blog-subtitle">
+        {{ subTitle }}
+      </div>
+    </v-col>
+    <v-col md="8" />
+    <!-- <div class="blog-title">
       {{ title }}
     </div>
-    <div class="blog-subtitle">{{ subTitle }}</div>
+    <div class="blog-subtitle">{{ subTitle }}</div> -->
   </header>
 </template>
 
@@ -32,13 +42,11 @@ export default class BlogTitle extends Vue {
   z-index: 1;
 }
 .blog-title {
-  font-size: 35px;
+  font-size: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-left: 30px;
 }
 .blog-subtitle {
   font-size: 15px;
   color: #525151;
-  margin-left: 15px;
 }
 </style>
