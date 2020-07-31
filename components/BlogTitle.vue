@@ -1,7 +1,7 @@
 <template>
   <header class="blog-top">
-    <v-col md="1" />
-    <v-col md="3" cols="12">
+    <v-col md="1" v-if="!$vuetify.breakpoint.smAndDown" />
+    <v-col md="4" cols="12">
       <div class="blog-title">
         {{ title }}
       </div>
@@ -9,7 +9,7 @@
         {{ subTitle }}
       </div>
     </v-col>
-    <v-col md="8" />
+    <v-col md="7" />
     <!-- <div class="blog-title">
       {{ title }}
     </div>
@@ -37,16 +37,14 @@ export default class BlogTitle extends Vue {
   align-items: center;
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(250, 139, 139);
-  position: fixed;
   width: 100%;
-  z-index: 1;
 }
 .blog-title {
-  font-size: 30px;
+  font-size: 3rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .blog-subtitle {
-  font-size: 15px;
+  font-size: 1.5rem;
   color: #525151;
 }
 </style>

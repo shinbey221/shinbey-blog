@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors';
+
 export default {
   mode: 'spa',
   /*
@@ -19,6 +20,16 @@ export default {
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    metaInfo: {
+      link: [{ rel: 'stylesheet', href: '/style/index.css' }],
+    },
+    bodyAttrs: {
+      class: 'body-style',
+    },
+    htmlAttrs: {
+      lang: 'ja',
+      class: 'html-style',
+    },
   },
   /*
    ** Customize the progress-bar color
@@ -27,7 +38,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['./style/index.css'],
   /*
    ** Plugins to load before mounting the App
    */

@@ -28,8 +28,9 @@ export default class Items extends VuexModule {
     const blogPosts = files
       .keys()
       .map((key: string, index: any) => {
-        const res = files(key);
+        const res: BlogContent = files(key);
         res.id = index + 1;
+        res.date = new Date(res.date).toLocaleString('ja-JP').slice(0, 15);
         return res;
       })
       .reverse();

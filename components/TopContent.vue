@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <Card :title="item.title" :content="item.content" />
-    <!-- <v-card
+  <Card
+    :title="item.title"
+    :introduction="item.introduction"
+    :date="item.date"
+    :categories="item.category"
+    @click="$emit('click', itemIndex)"
+  />
+  <!-- <v-card
       class="mx-auto card-style"
       outlined
       @click="$emit('click', itemIndex)"
@@ -23,7 +28,6 @@
         </v-list-item-content>
       </v-list-item>
     </v-card> -->
-  </div>
 </template>
 
 <script lang="ts">
@@ -41,7 +45,7 @@ export default class BlogTitle extends Vue {
   private item!: BlogContent;
 
   mounted(): void {
-    console.log(this.item.content);
+    console.log(new Date(this.item.date).toLocaleString('ja-JP'));
   }
 }
 </script>
@@ -49,6 +53,5 @@ export default class BlogTitle extends Vue {
 <style scoped>
 .card-style {
   margin-bottom: 30px;
-  width: 95%;
 }
 </style>

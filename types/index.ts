@@ -3,6 +3,7 @@ export interface BlogContent {
   date: string;
   category: string[];
   content: string;
+  introduction: string;
   id: number;
 }
 

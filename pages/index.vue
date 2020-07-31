@@ -1,11 +1,16 @@
 <template>
   <div class="item-area">
-    <v-col md="8">
+    <v-col md="8" cols="12">
       <template v-for="(item, key) in items">
-        <TopContent :key="key" :item="item" @click="routeContent(item)" />
+        <TopContent
+          :key="key"
+          :item="item"
+          @click="routeContent(item)"
+          class="card-style"
+        />
       </template>
     </v-col>
-    <v-col md="4">
+    <v-col md="4" v-if="!$vuetify.breakpoint.smAndDown" class="right-style">
       <Card>
         test
       </Card>
@@ -57,8 +62,15 @@ export default class IndexPage extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .item-area {
   display: flex;
+  margin-top: 20px;
+}
+.card-style {
+  margin-bottom: 20px;
+}
+.right-style {
+  padding-right: 30px;
 }
 </style>
