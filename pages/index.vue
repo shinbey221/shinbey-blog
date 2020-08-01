@@ -1,7 +1,12 @@
 <template>
-  <div class="item-area">
+  <div>
     <template v-for="(item, key) in items">
-      <TopContent :key="key" :item="item" @click="routeContent(item)" />
+      <Card
+        :key="key"
+        :blog-item="item"
+        :on-click="routeContent"
+        class="card-style"
+      />
     </template>
   </div>
 </template>
@@ -10,13 +15,13 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { items, categories } from './../store/index';
 import BlogTitle from '~/components/BlogTitle.vue';
-import TopContent from '~/components/TopContent.vue';
+import Card from '~/components/Card.vue';
 
 @Component({
   layout: 'base',
   components: {
     BlogTitle,
-    TopContent,
+    Card,
   },
 })
 export default class IndexPage extends Vue {
@@ -39,18 +44,17 @@ export default class IndexPage extends Vue {
     this.itemCategories = categories.AllCategories;
   }
 
-  routeContent(item: any): void {
+  routeContent(id: number): void {
     this.$router.push({
-      path: `contents/${item.id}`,
+      path: `contents/${id}`,
       params: { test: 'aaaaa' },
     });
   }
 }
 </script>
 
-<style>
-.item-area {
-  display: flex;
-  flex-flow: column;
+<style scoped>
+.card-style {
+  margin-bottom: 20px;
 }
 </style>

@@ -3,6 +3,7 @@ export interface BlogContent {
   date: string;
   category: string[];
   content: string;
+  introduction: string;
   id: number;
 }
 
@@ -12,4 +13,8 @@ export interface BlogItems {
 
 export interface BlogPostsType {
   blogPosts: Array<any>;
+}
+
+export interface HeaderTag {
+  title: string;
 }

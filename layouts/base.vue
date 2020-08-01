@@ -1,13 +1,17 @@
 <template>
   <v-app class="all-area">
     <div class="main-content">
-      <BlogTitle :title="title" />
-      <v-row class="mb-6 content-area" no-gutters>
-        <v-col :cols="2" />
-        <v-col :cols="6">
+      <BlogTitle />
+      <v-row class="mb-6 item-area" no-gutters>
+        <v-col md="2" />
+        <v-col md="7" cols="12">
           <nuxt />
         </v-col>
-        <v-col :cols="4" />
+        <v-col md="3" v-if="!$vuetify.breakpoint.smAndDown" class="right-style">
+          <Card>
+            test
+          </Card>
+        </v-col>
       </v-row>
     </div>
   </v-app>
@@ -16,23 +20,32 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import BlogTitle from '~/components/BlogTitle.vue';
+import Card from '~/components/Card.vue';
+import { BLOG_TITLE, BLOG_SUBTITLE } from '~/constants/top';
 
 @Component({
   components: {
     BlogTitle,
+    Card,
   },
 })
 export default class Content extends Vue {
-  title: string = `shinbey's blog`;
+  title: string = BLOG_TITLE;
+  subtitle: string = BLOG_SUBTITLE;
 }
 </script>
 
 <style scoped>
-.content-area {
-  position: relative;
-  top: 100px;
-}
 .all-area {
   background-color: rgb(250, 250, 250);
+}
+
+.item-area {
+  display: flex;
+  margin-top: 30px;
+}
+
+.right-style {
+  padding: 0 20px;
 }
 </style>
