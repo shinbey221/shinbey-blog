@@ -1,19 +1,16 @@
 <template>
   <v-app class="all-area">
     <div class="main-content">
-      <!-- <BlogTitle :title="title" /> -->
-      <div class="header-container">
-        <div class="overlay">
-          <h1 class="blog-title">Shinbey's BLOG</h1>
-          <p class="subtitle">
-            Live everyday as if it were the last day
-          </p>
-        </div>
-      </div>
-      <v-row class="mb-6" no-gutters>
+      <BlogTitle />
+      <v-row class="mb-6 item-area" no-gutters>
         <v-col md="2" />
-        <v-col md="10" cols="12">
+        <v-col md="7" cols="12">
           <nuxt />
+        </v-col>
+        <v-col md="3" v-if="!$vuetify.breakpoint.smAndDown" class="right-style">
+          <Card>
+            test
+          </Card>
         </v-col>
       </v-row>
     </div>
@@ -23,14 +20,18 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import BlogTitle from '~/components/BlogTitle.vue';
+import Card from '~/components/Card.vue';
+import { BLOG_TITLE, BLOG_SUBTITLE } from '~/constants/top';
 
 @Component({
   components: {
     BlogTitle,
+    Card,
   },
 })
 export default class Content extends Vue {
-  title: string = `shinbey's blog`;
+  title: string = BLOG_TITLE;
+  subtitle: string = BLOG_SUBTITLE;
 }
 </script>
 
@@ -38,34 +39,13 @@ export default class Content extends Vue {
 .all-area {
   background-color: rgb(250, 250, 250);
 }
-.header-container {
-  align-items: center;
+
+.item-area {
   display: flex;
-  background-image: url('./../images/header.jpg');
-  height: 300px;
+  margin-top: 30px;
 }
-.overlay {
-  padding: 16px 24px;
-  left: 12%;
-  position: relative;
-  color: white;
-  font-family: 'Lato';
-  text-align: center;
-  background: linear-gradient(
-      145deg,
-      transparent 43px,
-      rgba(255, 255, 255, 0.15) 20px
-    ),
-    linear-gradient(334deg, transparent 34px, rgba(255, 255, 255, 0.15) 20px);
-  background-position: top left, bottom right;
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
-}
-.blog-title {
-  font-size: 3.6rem;
-}
-.subtitle {
-  margin-top: 4px;
-  font-size: 2.2rem;
+
+.right-style {
+  padding: 0 20px;
 }
 </style>

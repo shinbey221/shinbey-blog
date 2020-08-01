@@ -1,11 +1,11 @@
 <template>
-  <div class="card">
+  <div class="card" @click="onClick(blogItem.id)">
     <div class="card-header">
-      <div class="card-title">{{ title }}</div>
-      <div class="card-date">{{ date }}</div>
+      <div class="card-title">{{ blogItem.title }}</div>
+      <div class="card-date">{{ blogItem.date }}</div>
     </div>
     <div>
-      <template v-for="(item, key) in categories">
+      <template v-for="(item, key) in blogItem.category">
         <v-chip
           :key="key"
           class="ma-2"
@@ -18,31 +18,22 @@
         </v-chip>
       </template>
     </div>
-    <!-- <v-row>
-      <v-col class="card-title" md="9" cols="12">{{ title }}</v-col>
-      <v-col class="card-date" md="3">{{ date }}</v-col>
-    </v-row> -->
-    <div class="introduction">{{ introduction }}</div>
+    <div class="introduction">{{ blogItem.introduction }}</div>
     <slot />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { BlogContent } from '~/types/index';
 
 @Component
 export default class BlogTitle extends Vue {
-  @Prop({ default: '' })
-  private title?: string;
+  @Prop({ default: {} })
+  private blogItem?: BlogContent;
 
-  @Prop({ default: '' })
-  private date?: string;
-
-  @Prop({ default: '' })
-  private categories?: Array<string>;
-
-  @Prop({ default: '' })
-  private introduction?: string;
+  @Prop({ default: Function })
+  private onClick?: (id: number) => void;
 }
 </script>
 

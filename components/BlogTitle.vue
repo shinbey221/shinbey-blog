@@ -1,50 +1,54 @@
 <template>
-  <header class="blog-top">
-    <v-col md="1" v-if="!$vuetify.breakpoint.smAndDown" />
-    <v-col md="4" cols="12">
-      <div class="blog-title">
-        {{ title }}
-      </div>
-      <div class="blog-subtitle">
-        {{ subTitle }}
-      </div>
-    </v-col>
-    <v-col md="7" />
-    <!-- <div class="blog-title">
-      {{ title }}
+  <header class="header-container">
+    <div class="overlay">
+      <h1 class="blog-title">{{ title }}</h1>
+      <p class="subtitle">
+        {{ subtitle }}
+      </p>
     </div>
-    <div class="blog-subtitle">{{ subTitle }}</div> -->
   </header>
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
+import { BLOG_TITLE, BLOG_SUBTITLE } from '~/constants/top';
 
 @Component
 export default class BlogTitle extends Vue {
-  @Prop({ default: '' })
-  private title!: string;
-
-  subTitle: string = '技術とかサッカーとかアニメとか日常とか';
+  title: string = BLOG_TITLE;
+  subtitle: string = BLOG_SUBTITLE;
 }
 </script>
 
 <style scoped>
-.blog-top {
-  height: 70px;
-  display: flex;
-  justify-content: start;
+.header-container {
   align-items: center;
-  background-color: rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(250, 139, 139);
-  width: 100%;
+  display: flex;
+  background-image: url('./../images/header.jpg');
+  height: 300px;
+}
+.overlay {
+  padding: 16px 24px;
+  left: 12%;
+  position: relative;
+  color: white;
+  font-family: 'Lato';
+  text-align: center;
+  background: linear-gradient(
+      145deg,
+      transparent 43px,
+      rgba(255, 255, 255, 0.15) 20px
+    ),
+    linear-gradient(334deg, transparent 34px, rgba(255, 255, 255, 0.15) 20px);
+  background-position: top left, bottom right;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
 }
 .blog-title {
-  font-size: 3rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3.6rem;
 }
-.blog-subtitle {
-  font-size: 1.5rem;
-  color: #525151;
+.subtitle {
+  margin-top: 4px;
+  font-size: 2.2rem;
 }
 </style>

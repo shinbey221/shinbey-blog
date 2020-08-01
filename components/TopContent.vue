@@ -4,7 +4,7 @@
     :introduction="item.introduction"
     :date="item.date"
     :categories="item.category"
-    @click="$emit('click', itemIndex)"
+    :on-click="test"
   />
   <!-- <v-card
       class="mx-auto card-style"
@@ -47,11 +47,16 @@ export default class BlogTitle extends Vue {
   mounted(): void {
     console.log(new Date(this.item.date).toLocaleString('ja-JP'));
   }
+
+  test(): void {
+    console.log('sds');
+  }
+
+  routeContent(id: number): void {
+    this.$router.push({
+      path: `contents/${id}`,
+      params: { test: 'aaaaa' },
+    });
+  }
 }
 </script>
-
-<style scoped>
-.card-style {
-  margin-bottom: 30px;
-}
-</style>

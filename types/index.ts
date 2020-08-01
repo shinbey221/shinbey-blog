@@ -14,3 +14,7 @@ export interface BlogItems {
 export interface BlogPostsType {
   blogPosts: Array<any>;
 }
+
+export interface HeaderTag {
+  title: string;
+}
