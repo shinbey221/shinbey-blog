@@ -14,13 +14,11 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { items, categories } from './../store/index';
-import BlogTitle from '~/components/BlogTitle.vue';
 import Card from '~/components/Card.vue';
 
 @Component({
   layout: 'base',
   components: {
-    BlogTitle,
     Card,
   },
 })
