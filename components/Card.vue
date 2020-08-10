@@ -28,7 +28,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { BlogContent } from '~/types/index';
 
 @Component
-export default class BlogTitle extends Vue {
+export default class Card extends Vue {
   @Prop({ default: {} })
   private blogItem?: BlogContent;
 

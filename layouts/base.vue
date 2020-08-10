@@ -1,7 +1,7 @@
 <template>
   <v-app class="all-area">
     <div class="main-content">
-      <BlogTitle />
+      <BlogHeader />
       <v-row class="mb-6 item-area" no-gutters>
         <v-col md="2" />
         <v-col md="7" cols="12">
@@ -19,13 +19,13 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import BlogTitle from '~/components/BlogTitle.vue';
+import BlogHeader from '~/components/BlogHeader.vue';
 import Card from '~/components/Card.vue';
 import { BLOG_TITLE, BLOG_SUBTITLE } from '~/constants/top';
 
 @Component({
   components: {
-    BlogTitle,
+    BlogHeader,
     Card,
   },
 })
