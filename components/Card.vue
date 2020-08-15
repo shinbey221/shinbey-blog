@@ -9,7 +9,7 @@
         <v-chip
           :key="key"
           class="ma-2"
-          color="orange darken-4"
+          color="blue-grey lighten-2"
           small
           text-color="white"
         >

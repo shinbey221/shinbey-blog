@@ -19,7 +19,6 @@ interface HeaderClassObject {
 }
 interface OverlayClassObject {
   'overlay-small': boolean;
-  'overlay-normal': boolean;
 }
 
 @Component
@@ -34,7 +33,6 @@ export default class BlogHeader extends Vue {
 
   overlayClassObject: OverlayClassObject = {
     'overlay-small': false,
-    'overlay-normal': true,
   };
 
   get computedHeaderClass(): HeaderClassObject {
@@ -51,10 +49,8 @@ export default class BlogHeader extends Vue {
   get computedOverlayClass(): OverlayClassObject {
     if (this.$vuetify.breakpoint.smAndDown) {
       this.overlayClassObject['overlay-small'] = true;
-      this.overlayClassObject['overlay-normal'] = false;
     } else {
       this.overlayClassObject['overlay-small'] = false;
-      this.overlayClassObject['overlay-normal'] = true;
     }
     return this.overlayClassObject;
   }
@@ -65,43 +61,38 @@ export default class BlogHeader extends Vue {
 .header-base {
   align-items: center;
   display: flex;
-  background-image: url('./../images/header.jpg');
+  background-image: url('./../images/manhattan.jpg');
+  justify-content: center;
+  background-position: 0 -200px;
 }
 .header-normal {
-  height: 300px;
+  height: 350px;
 }
 .header-small {
-  justify-content: center;
   height: 250px;
 }
-.overlay-small {
-  position: inherit;
-  width: 85%;
-}
-.overlay-normal {
-  position: relative;
-}
 .overlay {
-  padding: 16px 24px;
-  left: 12%;
+  padding: 26px 26px;
   color: white;
   font-family: 'Lato';
   text-align: center;
-  background: linear-gradient(
-      145deg,
-      transparent 43px,
-      rgba(255, 255, 255, 0.15) 20px
-    ),
-    linear-gradient(334deg, transparent 34px, rgba(255, 255, 255, 0.15) 20px);
-  background-position: top left, bottom right;
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
+  background-color: rgba(200, 200, 200, 0.4);
 }
-.blog-title {
+.overlay-small {
+  width: 85%;
+  padding: 16px 8px 2px;
+}
+.overlay-small h1 {
   font-size: 3.6rem;
 }
-.subtitle {
-  margin-top: 4px;
+.overlay-small div {
   font-size: 2.2rem;
+}
+.blog-title {
+  font-size: 4.2rem;
+}
+.subtitle {
+  margin-top: 10px;
+  font-size: 2.8rem;
 }
 </style>
