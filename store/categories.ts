@@ -19,6 +19,7 @@ export default class Categories extends VuexModule {
 
   @Action
   async getAllCategories(): Promise<void> {
+    console.log('get categories');
     const files = await require.context('~/categories', false, /\.md$/);
     const categories = files.keys().map((key: string) => {
       const fileName = key.substring(2, key.length - 3);

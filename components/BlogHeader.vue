@@ -1,10 +1,17 @@
 <template>
-  <header class="header-base" :class="computedHeaderClass">
-    <div class="overlay" :class="computedOverlayClass">
-      <h1 class="blog-title">{{ title }}</h1>
-      <p class="subtitle">
-        {{ subtitle }}
-      </p>
+  <header class="header-base">
+    <div class="trim" :class="computedTrimClass">
+      <img
+        :class="{ 'header-image-small': $vuetify.breakpoint.smAndDown }"
+        src="./../images/manhattan.jpg"
+        alt="header-image"
+      />
+      <div class="overlay" :class="computedOverlayClass">
+        <h1 class="blog-title">{{ title }}</h1>
+        <p class="subtitle">
+          {{ subtitle }}
+        </p>
+      </div>
     </div>
   </header>
 </template>
@@ -13,9 +20,9 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { BLOG_TITLE, BLOG_SUBTITLE } from '~/constants/top';
 
-interface HeaderClassObject {
-  'header-normal': boolean;
-  'header-small': boolean;
+interface TrimClassObject {
+  'trim-normal': boolean;
+  'trim-small': boolean;
 }
 interface OverlayClassObject {
   'overlay-small': boolean;
@@ -25,25 +32,26 @@ interface OverlayClassObject {
 export default class BlogHeader extends Vue {
   title: string = BLOG_TITLE;
   subtitle: string = BLOG_SUBTITLE;
+  test: boolean = true;
 
-  headerClassObject: HeaderClassObject = {
-    'header-normal': true,
-    'header-small': false,
+  trimClassObject: TrimClassObject = {
+    'trim-normal': true,
+    'trim-small': false,
   };
 
   overlayClassObject: OverlayClassObject = {
     'overlay-small': false,
   };
 
-  get computedHeaderClass(): HeaderClassObject {
+  get computedTrimClass(): TrimClassObject {
     if (this.$vuetify.breakpoint.smAndDown) {
-      this.headerClassObject['header-small'] = true;
-      this.headerClassObject['header-normal'] = false;
+      this.trimClassObject['trim-small'] = true;
+      this.trimClassObject['trim-normal'] = false;
     } else {
-      this.headerClassObject['header-small'] = false;
-      this.headerClassObject['header-normal'] = true;
+      this.trimClassObject['trim-small'] = false;
+      this.trimClassObject['trim-normal'] = true;
     }
-    return this.headerClassObject;
+    return this.trimClassObject;
   }
 
   get computedOverlayClass(): OverlayClassObject {
@@ -61,17 +69,43 @@ export default class BlogHeader extends Vue {
 .header-base {
   align-items: center;
   display: flex;
-  background-image: url('./../images/manhattan.jpg');
   justify-content: center;
-  background-position: 0 -200px;
 }
-.header-normal {
+
+.trim {
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  position: relative;
+}
+.trim img {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+}
+.trim-normal {
   height: 350px;
 }
-.header-small {
+.trim-normal img {
+  top: -50%;
+}
+.trim-small {
   height: 250px;
 }
+.trim-small img {
+  top: 0;
+}
+
+.header-image-small {
+  height: 300px;
+}
+
 .overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   padding: 26px 26px;
   color: white;
   font-family: 'Lato';
@@ -83,11 +117,12 @@ export default class BlogHeader extends Vue {
   padding: 16px 8px 2px;
 }
 .overlay-small h1 {
-  font-size: 3.6rem;
+  font-size: 3rem;
 }
-.overlay-small div {
+.overlay-small p {
   font-size: 2.2rem;
 }
+
 .blog-title {
   font-size: 4.2rem;
 }
