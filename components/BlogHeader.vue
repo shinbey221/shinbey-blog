@@ -6,7 +6,10 @@
         src="./../images/manhattan.jpg"
         alt="header-image"
       />
-      <div class="overlay" :class="computedOverlayClass">
+      <div
+        class="overlay"
+        :class="{ 'overlay-small': $vuetify.breakpoint.smAndDown }"
+      >
         <h1 class="blog-title">{{ title }}</h1>
         <p class="subtitle">
           {{ subtitle }}
@@ -24,9 +27,6 @@ interface TrimClassObject {
   'trim-normal': boolean;
   'trim-small': boolean;
 }
-interface OverlayClassObject {
-  'overlay-small': boolean;
-}
 
 @Component
 export default class BlogHeader extends Vue {
@@ -39,10 +39,6 @@ export default class BlogHeader extends Vue {
     'trim-small': false,
   };
 
-  overlayClassObject: OverlayClassObject = {
-    'overlay-small': false,
-  };
-
   get computedTrimClass(): TrimClassObject {
     if (this.$vuetify.breakpoint.smAndDown) {
       this.trimClassObject['trim-small'] = true;
@@ -52,15 +48,6 @@ export default class BlogHeader extends Vue {
       this.trimClassObject['trim-normal'] = true;
     }
     return this.trimClassObject;
-  }
-
-  get computedOverlayClass(): OverlayClassObject {
-    if (this.$vuetify.breakpoint.smAndDown) {
-      this.overlayClassObject['overlay-small'] = true;
-    } else {
-      this.overlayClassObject['overlay-small'] = false;
-    }
-    return this.overlayClassObject;
   }
 }
 </script>
