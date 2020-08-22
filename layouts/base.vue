@@ -7,7 +7,7 @@
         <v-col md="7" cols="12">
           <nuxt />
         </v-col>
-        <v-col md="3" v-if="!$vuetify.breakpoint.smAndDown" class="right-style">
+        <v-col v-if="!$vuetify.breakpoint.smAndDown" md="3" class="right-style">
           <Profile />
         </v-col>
       </v-row>
@@ -32,6 +32,7 @@ interface RowClassObject {
     Card,
     Profile,
   },
+  middleware: 'blogItems',
 })
 export default class Content extends Vue {
   title: string = BLOG_TITLE;

@@ -35,9 +35,7 @@ export default class IndexPage extends Vue {
     };
   }
 
-  async created(): Promise<void> {
-    await items.getAllBlogItems();
-    await categories.getAllCategories();
+  created(): void {
     this.items = items.AllBlogItems;
     this.itemCategories = categories.AllCategories;
   }
@@ -45,7 +43,6 @@ export default class IndexPage extends Vue {
   routeContent(id: number): void {
     this.$router.push({
       path: `contents/${id}`,
-      params: { test: 'aaaaa' },
     });
   }
 }

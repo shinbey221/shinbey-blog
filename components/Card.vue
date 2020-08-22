@@ -29,7 +29,7 @@ import { BlogContent } from '~/types/index';
 
 @Component
 export default class Card extends Vue {
-  @Prop({ default: {} })
+  @Prop({ default: Object })
   private blogItem?: BlogContent;
 
   @Prop({ default: Function })

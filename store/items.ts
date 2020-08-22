@@ -37,7 +37,6 @@ export default class Items extends VuexModule {
     for (let i = 0; i < 15; i++) {
       blogPosts.push(blogPosts[0]);
     }
-    console.log(blogPosts);
     this.context.commit('setBlogItems', blogPosts);
   }
 
