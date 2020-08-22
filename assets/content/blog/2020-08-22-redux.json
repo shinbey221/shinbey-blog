@@ -1,0 +1,10 @@
+{
+  "date": "2020-08-22T08:07:58.299Z",
+  "title": "Redux",
+  "category": [
+    "React",
+    "Redux"
+  ],
+  "introduction": "状態管理の方法 コンポーネント間でデータのやりとりを容易にする",
+  "content": "### action\n\nJavaScriptのオブジェクト\nオブジェクト内部でtypeというキーと、typeのvalueを持つ\ntypeの値はユニークでなければならない\n\nactionを返す関数をaction creatorと呼ぶ\n\n`src/actions/index.js`\n\n```javascript\nexport const INCREMENT = 'INCREMENT'\nexport const DECREMENT = 'DECREMENT'\n\nexport const increment = () => ({ type: INCREMENT })\nexport const decrement = () => ({ type: DECREMENT })\n```\n\nこれらはviewを担当するcomponentでimportし、イベントがハンドルされたタイミングで当該action creatorをinvokeし、状態遷移を行う\n\n### reducer\n\nreducerはactionが発生された時、そのtypeによって状態をどう遷移させるかを定義する\n\n`src/reducers/index.js`に全てのreducerを結合する\n\n`src/reducers/index.js`\n\n```javascript\nimport { combineReducers } from 'redux'\nimport count from './count'\n\nexport default combineReducers({ count })\n```\n\n`src/reducers/count.js`にカウンターの状態遷移を記述する\n\n```javascript\nimport { INCREMENT, DECREMENT } from '../actions'\n\nconst initialState = { value: 0 }\n\nexport default (state = initialState , action) => {\n  switch (action.type) {\n    case INCREMENT:\n      return { value: state.value + 1 }\n    case DECREMENT:\n      return { value: state.value - 1 }\n    default:\n      return state\n  }\n} \n```\n\n### store\n\nアプリケーション内の全てのコンポーネントで利用できる\n\nstoreを作成するためのパッケージであるcreateStoreと、作成したstoreを全コンポーネントに渡す機能をもつproviderをreduxからimportする\nまた、reducerもimportする\n\n```javascript\nimport { createStore } from 'redux'\nimport { Provider } from 'redux'\nimport reducer from './reducers'\n```\n\nstoreを作成する\n\n```javascript\nconst store = createStore(reducer)\n```\n\nここで作られるstoreはアプリケーション内部でひとつになる\n\n次に、ここで作成したstoreを全てのコンポーネントで利用できるようにする\n\n`index.js`\n\n```javascript\nconst store = createStore(reducer)\n\nReactDOM.render(\n  <Provider store={store}>\n    <App />\n  </Provider>,\n  document.getElementById('root')\n)\n```"
+}
