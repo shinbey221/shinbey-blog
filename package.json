@@ -17,7 +17,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "marked": "^1.1.0",
+    "marked": "^4.0.10",
     "nuxt": "^2.0.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
